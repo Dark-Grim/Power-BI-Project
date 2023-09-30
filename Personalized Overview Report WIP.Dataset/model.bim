@@ -1,0 +1,4104 @@
+{
+  "compatibilityLevel": 1601,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Library_Songs\",\"Subscriptions\",\"Playlists\",\"Parameter1\",\"Transform Sample File\",\"Sample File\",\"Transform File\",\"Search_History\",\"Live Comments\",\"ChannelID\",\"APIKey\",\"My Subscriber\",\"Measure Table\",\"Playlist Details\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.119.986.0 (23.07)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "fastCombine": true,
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "Parameter1",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Binary"
+          }
+        ],
+        "expression": "#\"Sample File\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Sample File\", Type=\"Binary\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "345d709c-9de4-4fb3-9aad-58cf73f48c46",
+        "queryGroup": "Transform File from playlists\\Helper Queries"
+      },
+      {
+        "name": "Transform Sample File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Csv.Document(Parameter1,[Delimiter=\",\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+          "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+          "in",
+          "    #\"Promoted Headers\""
+        ],
+        "kind": "m",
+        "lineageTag": "d20278f6-65f8-48e3-8ef3-21793fe523ab",
+        "queryGroup": "Transform File from playlists"
+      },
+      {
+        "name": "Sample File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Binary"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Folder.Files(\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\playlists\"),",
+          "    #\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\playlists\\_Bands and Singles-videos csv\" = Source{[#\"Folder Path\"=\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\playlists\\\",Name=\"Bands and Singles-videos.csv\"]}[Content]",
+          "in",
+          "    #\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\playlists\\_Bands and Singles-videos csv\""
+        ],
+        "kind": "m",
+        "lineageTag": "bf7c7049-aa61-449a-bbf3-f4ed6a40b90e",
+        "queryGroup": "Transform File from playlists\\Helper Queries"
+      },
+      {
+        "name": "Transform File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Function"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = (Parameter1 as binary) => let",
+          "    Source = Csv.Document(Parameter1,[Delimiter=\",\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+          "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+          "in",
+          "    #\"Promoted Headers\"",
+          "in",
+          "    Source"
+        ],
+        "kind": "m",
+        "lineageTag": "7c062093-0a60-4a42-ae2c-77ea338ef7ae",
+        "mAttributes": "[ FunctionQueryBinding = \"{\"\"exemplarFormulaName\"\":\"\"Transform Sample File\"\"}\" ]",
+        "queryGroup": "Transform File from playlists\\Helper Queries"
+      },
+      {
+        "name": "ChannelID",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "expression": "\"UCwG_WD-_iz0XizUvE3QGwWg\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "58e84b5a-e73a-4cdb-b048-d88e5647d519"
+      },
+      {
+        "name": "APIKey",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "expression": "\"AIzaSyCri9-SYpOWwPkJDCXPuKKEgtuRWc2trgY\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "364f2f85-da7b-419f-bc10-109a5c5ae4e6"
+      }
+    ],
+    "queryGroups": [
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Transform File from playlists"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Transform File from playlists\\Helper Queries"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "2"
+          }
+        ],
+        "description": "Errors in queries that were loaded on 01-09-2023 18:33:43.",
+        "folder": "Query Errors - 01-09-2023 18:33:43"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "c0656a27-b226-45bb-8447-f9dbdf560bb7",
+        "fromColumn": "Playlist Video Creation Timestamp",
+        "fromTable": "Playlists",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_0ddba20a-90d7-458a-bf0a-c64f076fdbe8"
+      },
+      {
+        "name": "1154f660-5a25-49cd-836a-765eb3dd8d48",
+        "fromColumn": "Date and Time",
+        "fromTable": "Live Comments",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_d9de6562-ab6f-42e2-9717-363783314821"
+      },
+      {
+        "name": "2035d1ea-9ede-4922-9826-39ed758cdf03",
+        "fromColumn": "GetDataUsingAPI - Published Date",
+        "fromTable": "Playlists",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_25247a66-c88c-46c2-9499-2cb6f004f26a"
+      },
+      {
+        "name": "0889b626-9ba0-4a2a-b64e-448cdafce1ff",
+        "fromColumn": "Playlist Create Timestamp",
+        "fromTable": "Playlist Details",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_3e9fb720-7bbc-497e-a357-6daf0fef6346"
+      },
+      {
+        "name": "f3f22551-2bf2-4580-a3c0-c25f6e6cd80d",
+        "fromColumn": "Playlist Update Timestamp",
+        "fromTable": "Playlist Details",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_debfdb63-a826-4a54-9e2e-2c5ad3418005"
+      },
+      {
+        "name": "400aa30c-09e4-4828-ae7b-671d452f668c",
+        "fromColumn": "Playlist Published At",
+        "fromTable": "Playlist Details",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_27b7fda2-5ef0-450e-852c-61ce8b38b0be"
+      },
+      {
+        "name": "1a6c4421-2fe0-43d0-a8e2-dc965485ee64",
+        "crossFilteringBehavior": "bothDirections",
+        "fromColumn": "Video Owner Channel ID",
+        "fromTable": "Playlist Details",
+        "toCardinality": "many",
+        "toColumn": "GetDataUsingAPI - Channel ID",
+        "toTable": "Playlists"
+      },
+      {
+        "name": "2fc966a6-dea0-407f-8770-79799019e4d9",
+        "crossFilteringBehavior": "bothDirections",
+        "fromColumn": "GetDataUsingAPI - Channel ID",
+        "fromTable": "Playlists",
+        "toCardinality": "many",
+        "toColumn": "Channel Id",
+        "toTable": "Subscriptions"
+      },
+      {
+        "name": "034ef0e5-cda1-44fb-abc8-d1a4348344df",
+        "fromColumn": "ChannelCreatedOn",
+        "fromTable": "Subscriptions",
+        "toColumn": "Date",
+        "toTable": "Date Table"
+      },
+      {
+        "name": "715d0deb-875d-4f69-b086-4bd404c8bc4b",
+        "crossFilteringBehavior": "bothDirections",
+        "fromColumn": "Date",
+        "fromTable": "Date Category table",
+        "toColumn": "Date",
+        "toTable": "Date Table"
+      },
+      {
+        "name": "9d611dd6-7dc1-4fb4-a1a4-46b65db3a2ff",
+        "fromColumn": "Comments Date",
+        "fromTable": "Search_History",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_5d0af5d6-62d1-43ff-82c2-54e9c66a84e9"
+      }
+    ],
+    "sourceQueryCulture": "en-IN",
+    "tables": [
+      {
+        "name": "# Item",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "d4c58c2800c64446a47b99b3049a06e3"
+          }
+        ],
+        "columns": [
+          {
+            "name": "# Item",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": {
+                  "version": 0
+                }
+              }
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": false,
+            "lineageTag": "0bcd2bde-84ff-4dec-93c1-555d84802650",
+            "sourceColumn": "[Value]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "d19e03b8-ff80-49d1-8fe4-bb931f7831b8",
+        "partitions": [
+          {
+            "name": "# Item",
+            "mode": "import",
+            "source": {
+              "expression": "GENERATESERIES(1, 20, 1)",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "# Pages",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "90f57a34f15f464983f854e7ab1a0708"
+          }
+        ],
+        "columns": [
+          {
+            "name": "# Page",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": {
+                  "version": 0
+                }
+              }
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": false,
+            "lineageTag": "eeeeb373-afa0-4843-b82d-25fccd50d675",
+            "sourceColumn": "[Value]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "2ff4ecae-5513-48e7-bc10-3409e78a783c",
+        "partitions": [
+          {
+            "name": "# Pages",
+            "mode": "import",
+            "source": {
+              "expression": "GENERATESERIES(1, 5, 1)",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Date Category table",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "7c4e83ad2ea843138a1cac3335fab973"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c5dc5544-32df-4c3b-9f00-61c5d55f5783",
+            "sourceColumn": "Date Table[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "TYPE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "cef755c7-dacd-4926-8a0f-3f8109cde790",
+            "sourceColumn": "[TYPE]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "6406c870-16fb-4031-be10-cb4f41035f41",
+        "partitions": [
+          {
+            "name": "Date Category table",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "UNION (",
+                "    ADDCOLUMNS ( ",
+                "        'Date Table', ",
+                "        \"TYPE\",",
+                "        SWITCH (",
+                "                TRUE(),",
+                "                'Date Table'[Date] >= DATE(2005, 1, 1) && 'Date Table'[Date] <= DATE(2010, 12, 31), \"Till 2010\",",
+                "                'Date Table'[Date] >= DATE(2010, 12, 31) && 'Date Table'[Date] <= DATE(2015, 12, 31), \"From 2010 to 2015\",",
+                "                'Date Table'[Date] >= DATE(2015, 12, 31) && 'Date Table'[Date]<= MAX('Date Table'[Date]), \"From 2016 to Till Today\"",
+                "            )",
+                "        ), ",
+                "    ADDCOLUMNS (",
+                "        // CALENDAR ( MIN('Date Table'[Date]) , MAX('Date Table'[Date]))",
+                "        DISTINCT('Date Table'[Date]),",
+                "        \"TYPE\",",
+                "        \"Custom\"    ",
+                "    ),",
+                "    ADDCOLUMNS (",
+                "        //CALENDAR ( MIN('Date Table'[Date]) , MAX('Date Table'[Date]))",
+                "        DISTINCT('Date Table'[Date]),",
+                "        \"TYPE\",",
+                "        \"All Dates\"    ",
+                "    )",
+                ")",
+                "",
+                "           "
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Date Table",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "736aebcb5f56435f96f03c03dc2c47c6"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": false,
+            "lineageTag": "7573eb80-863b-4e2d-a24d-62fbb084c2ac",
+            "sourceColumn": "Subscriptions[ChannelCreatedOn]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "dataCategory": "Time",
+        "lineageTag": "b42283d8-29f3-4643-bab7-8ec69dd3990e",
+        "partitions": [
+          {
+            "name": "Date Table",
+            "mode": "import",
+            "source": {
+              "expression": "DISTINCT(Subscriptions[ChannelCreatedOn])",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_8e4d0835-2468-48c9-9c5c-8beaab0415fd",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "fdd4d382-796a-4b00-b17b-745e3c6e7e7c",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "628e05e6-511e-432c-8e65-fa09e77d0148",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "13f1abcf-9225-4173-8720-aadf88d3c2a5",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "5a760e83-68cc-49b9-a9d0-2c3af6d68685",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3c2deebf-2cf5-4a22-9ecd-7d9424faebcd",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "ed250c0c-2bc3-46cf-8102-f0e2bf9dc165",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "2b820207-2f5a-4bc3-85a6-0133f541ed72",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "5a148111-e67c-4c5f-938c-304fd9f6f476",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "3f816085-d230-471a-9d8b-50d5a633e845",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "49172300-eb47-4e1f-b0b5-d5cc017df3b4",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "8e05c3bb-6996-456b-8421-e99f94fc7a8c",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "c2959b18-988c-41a8-8f1f-218383beb14a"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "a483cb99-317e-4160-a6a3-90138a801b5b",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_8e4d0835-2468-48c9-9c5c-8beaab0415fd",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Library_Songs",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Album Title",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e7d09ad9-3914-48cb-895b-e1f7f382cf72",
+            "sourceColumn": "Album Title",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Artist Names",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dddbc327-ea95-433d-99fa-68c2b8b9c2c4",
+            "sourceColumn": "Artist Names",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Song Title",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "87b80c84-ffce-40d8-8048-6e8a42a538ee",
+            "sourceColumn": "Song Title",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Song URL",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "facab13a-d6a0-457e-b90a-1b153061e8d9",
+            "sourceColumn": "Song URL",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "6da1acaf-14f1-432d-bb52-429d9f42325d",
+        "partitions": [
+          {
+            "name": "Library_Songs",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\music-library-songs\\music-library-songs.csv\"),[Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}, {\"Column4\", type text}}),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Song URL\", type text}, {\"Song Title\", type text}, {\"Album Title\", type text}, {\"Artist Names\", type text}})",
+                "in",
+                "    #\"Changed Type1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Live Comments",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1c516c98-6784-44dd-b3db-555ba8d6ecac",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date and Time",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "a7e493f4-f431-40e3-9272-07062fa075bb",
+            "sourceColumn": "Date and Time",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_d9de6562-ab6f-42e2-9717-363783314821"
+                },
+                "isDefault": true,
+                "relationship": "1154f660-5a25-49cd-836a-765eb3dd8d48"
+              }
+            ]
+          },
+          {
+            "name": "Live_Comments",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bedee3f6-8baa-4c1c-8399-c0e50b1da4f3",
+            "sourceColumn": "Live_Comments",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Original Text",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4df1476a-85a5-4acc-afeb-1a20fbc7b19f",
+            "sourceColumn": "Original Text",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "51abf911-0965-44f3-80c1-d0e686c09c87",
+        "partitions": [
+          {
+            "name": "Live Comments",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = File.Contents(\"file:///D:/YT%20Overview%20Report/Data/YouTube%20and%20YouTube%20Music/my-live-chat-messages/my-live-chat-messages.html\"),",
+                "    #\"Extracted Table From Html\" = Html.Table(Source, {{\"Column1\", \"LI\"}, {\"Column2\", \"A\"}}, [RowSelector=\"LI\"]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Extracted Table From Html\",{{\"Column1\", type text}, {\"Column2\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Column2\", \"Category\"}, {\"Column1\", \"Live_Comment\"}}),",
+                "    #\"Inserted Text Between Delimiters\" = Table.AddColumn(#\"Renamed Columns\", \"Text Between Delimiters\", each Text.BetweenDelimiters([Live_Comment], \" \", \" \", 1, 1), type text),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Inserted Text Between Delimiters\",{{\"Text Between Delimiters\", \"Date and Time\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"Date and Time\", type datetime}}),",
+                "    #\"Inserted Text Between Delimiters1\" = Table.AddColumn(#\"Changed Type1\", \"Text Between Delimiters\", each Text.BetweenDelimiters([Live_Comment], \".\", \"i\", 0, 9), type text),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Inserted Text Between Delimiters1\",{{\"Text Between Delimiters\", \"Live_Comments\"}, {\"Live_Comment\", \"Original Text\"}})",
+                "in",
+                "    #\"Renamed Columns2\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "LocalDateTable_0ddba20a-90d7-458a-bf0a-c64f076fdbe8",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "aaf168d8-912a-4335-b113-fbb7b04db6ff",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "fddb6fb9-1d96-48ed-b981-1f49568061f5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "a2d68081-c85c-40b6-8431-ee28ef8fabfc",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "be8d1ebb-c169-4a54-975b-04023c62dbea",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "06e2776b-3bf3-42cd-ace5-a04ddc2e2a1a",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "8ee77de6-bb57-4c59-a6bc-b4945d643e8a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "4514a688-4ff4-4846-8d52-1986e7c93bc3",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "c5f5e939-3c5a-4e9e-be6e-daafedbc2596",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "a243adc7-99bf-4b92-985a-873d1203a74d",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "9c0fedda-dd5c-4479-84ab-0f2c702d82c7",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "68621fe2-5bb3-4e15-9f1b-65a276509053",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "c27c5d2f-0c4f-4005-a0b1-ecaee9865bbe"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "bc34dd4e-3a88-45ba-a0c8-299d2ddf6e5b",
+        "partitions": [
+          {
+            "name": "LocalDateTable_0ddba20a-90d7-458a-bf0a-c64f076fdbe8",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Playlists'[Playlist Video Creation Timestamp])), 1, 1), Date(Year(MAX('Playlists'[Playlist Video Creation Timestamp])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_25247a66-c88c-46c2-9499-2cb6f004f26a",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "b961dc38-9565-422a-838c-7012f5d09aa5",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "369a5142-1fcf-4f01-9f3e-4880f045625c",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "acb576e2-709f-4d1b-814a-5326122e7dea",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "4f8918d2-5c38-4ceb-bb16-81f5bd7e5f61",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "9b7ef814-b614-49ae-9c9b-ae24213eb1cb",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "ab340d8f-bc04-47e5-a5d5-28739ad763e8",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "a94d792c-9f51-481f-93c7-b9249f79f9eb",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "9a3af950-b277-40b0-b04a-f701db37b6f0",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "37e57237-8c89-4696-a911-37cd77eb77a3",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "86213031-14fb-47c5-b950-f428e95edca6",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "f7954d06-ba5d-4ce3-aaf4-718aa3e508f8",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "1e262ee3-cd14-41bb-96f2-3086f0916ccf"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "91d3f9cf-f7ed-4be6-8e15-6a221b9d6377",
+        "partitions": [
+          {
+            "name": "LocalDateTable_25247a66-c88c-46c2-9499-2cb6f004f26a",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Playlists'[GetDataUsingAPI - Published Date])), 1, 1), Date(Year(MAX('Playlists'[GetDataUsingAPI - Published Date])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_27b7fda2-5ef0-450e-852c-61ce8b38b0be",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "f7d3f774-6755-4e99-a66a-e337c486a158",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "528c1ba0-78cd-4567-84d1-52a06a3fd21a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3c4ddff0-ac83-4791-8e1a-a095d6dade36",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "00313d97-c5aa-4483-acc1-e20bb2b95cfc",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "4a0e11d5-a1aa-49d0-bc3c-ab398b4e8981",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "fc12d7c1-308e-49cc-9c06-54b95be0b5ee",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "a7a287ed-a90e-4a9a-a1bf-7e71cda04640",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "ede99f60-a488-412c-8911-24dd4f3934d9",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "48a6009c-f9f9-40f9-838e-d36bb0b58f21",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "beddd6b9-1252-4c36-a869-08f2c65aa39a",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "197c92fd-8314-47e3-b1e2-8be2db565ae2",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "629d6480-6157-49c5-9220-5bc80277b149"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "89dd91de-e801-4208-a3e9-06bbd1eaad28",
+        "partitions": [
+          {
+            "name": "LocalDateTable_27b7fda2-5ef0-450e-852c-61ce8b38b0be",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Playlist Details'[Playlist Published At])), 1, 1), Date(Year(MAX('Playlist Details'[Playlist Published At])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_3e9fb720-7bbc-497e-a357-6daf0fef6346",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "01816798-31e4-428f-88fd-a091be2df4c7",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "c733a73b-ec4a-4a71-87e7-36b3225b6339",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b40ef0f4-055c-4714-91a3-bf8ee4d1a305",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "542ba11a-6b78-43da-aed6-e792ba34156b",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "d5b115fb-6c88-4dad-b499-d7b10c5415a9",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "9c05fd3e-bba0-49f9-985b-80c2d3fef4b6",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "5da8f39d-cd40-4804-8d39-7da21ced7e6b",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "03192ad6-572d-49df-b309-a35eafaa3195",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "2e1204a9-e6a5-43f4-b393-22c9911cbb56",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "a50b39c7-6d5b-4391-80d7-d6753ccb5f4d",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "f923a0b8-2bf1-4a83-ae9c-2e7893b12160",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "ff2a637f-da80-416b-9c16-debaa534a175"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "4542a405-2361-41c9-af94-2aea04a29327",
+        "partitions": [
+          {
+            "name": "LocalDateTable_3e9fb720-7bbc-497e-a357-6daf0fef6346",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Playlist Details'[Playlist Create Timestamp])), 1, 1), Date(Year(MAX('Playlist Details'[Playlist Create Timestamp])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_5d0af5d6-62d1-43ff-82c2-54e9c66a84e9",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "0b7001d9-23b2-41d7-bada-db3022e72edb",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "265acf39-47f2-4270-93a2-5cd2dd30584e",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "8fe18496-d019-4c2c-bc3b-159943f7397d",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "be4ca872-2d17-4f40-9390-8a258e8df6f6",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "2f0e847e-bba5-461c-acb7-470d7d6d2734",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "7b5abbd8-056e-4d01-988c-7a9a3251cf46",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "1b3ec559-1ec3-4581-a5df-268af6eabcd5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "7023d0ad-09d4-4f83-a590-0e95baf09925",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "ea0b16e1-f669-41d6-ade6-7ccb7f0ba8db",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "e8ae5546-c1f8-43e2-96df-bf272bccb35d",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "43226f5c-e582-4833-96c2-15cb5b9cc033",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "704b0cd5-76a8-4219-abe3-7a93f9cdf53a"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "ab702ac8-9208-4502-b7ce-b1bd5fde536d",
+        "partitions": [
+          {
+            "name": "LocalDateTable_5d0af5d6-62d1-43ff-82c2-54e9c66a84e9",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Search_History'[Comments Date])), 1, 1), Date(Year(MAX('Search_History'[Comments Date])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_d9de6562-ab6f-42e2-9717-363783314821",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "a385db6b-967a-4633-b465-878dc990fe1c",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "4b1b20a0-5adc-413a-ae20-7189d8c9e3c5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "de861245-8dd1-407b-b5ed-336df971b79c",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "2212efb2-e050-442c-b7e2-bd53ac5df99c",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "6985cff7-f687-44de-b9ef-a591de2858a1",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "48165108-f641-41df-bacd-ff39528511e2",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "9ae68387-230e-4396-915e-8b2c5c24b383",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "ce45f5bf-932a-4f19-a0d6-a106d310b489",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "9584e852-9286-4008-89ab-70514294434b",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "d3c64fc5-a0db-425a-b2ad-8af37073f53e",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "720fa2b7-f5ce-4d90-a9d4-43a5f073f56d",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "bcd30e38-abb7-40df-a798-3ccf8d75fd77"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "e6003901-6f99-40e0-8ced-b39f7a2121ef",
+        "partitions": [
+          {
+            "name": "LocalDateTable_d9de6562-ab6f-42e2-9717-363783314821",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Live Comments'[Date and Time])), 1, 1), Date(Year(MAX('Live Comments'[Date and Time])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_debfdb63-a826-4a54-9e2e-2c5ad3418005",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "399e4052-697a-435f-ab19-f76e7eb69af5",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "97ea5ca6-2dd2-4917-9883-e60ea859c2d7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "44c215fb-be25-4462-9d3d-a96cc6df917a",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "5b852a24-58c5-4da3-b2ba-a5246a6931c0",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "387b179b-0ded-4050-97d0-ba3aaa29688f",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "25f35deb-d81c-4ef3-b0bd-1c11fb15f248",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "66f56721-0b7c-4af5-ad3b-1824a9fc0ba0",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "9daaaf88-290c-42de-be7a-678af2aeb343",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "c886c433-caf8-4448-a8de-75da259b99c1",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "10ee7f79-ca38-4b72-ac7f-af6c9377f4a0",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "d47b19db-a8af-486e-9914-3b2691aa0ec6",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "a50a1cd9-ebd3-41c4-836d-71ca5c107d17"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "13b4bb40-d1d1-4ba9-a42c-d5a0d22a3907",
+        "partitions": [
+          {
+            "name": "LocalDateTable_debfdb63-a826-4a54-9e2e-2c5ad3418005",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Playlist Details'[Playlist Update Timestamp])), 1, 1), Date(Year(MAX('Playlist Details'[Playlist Update Timestamp])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "Measure Table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Measure Names",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "526c54de-1361-4e91-9c4e-5a1eefb92ee7",
+            "sourceColumn": "Measure Names",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "36d69b1b-24c6-4456-a5e3-c4de21d16f6f",
+        "measures": [
+          {
+            "name": "Channel That I Subscribed",
+            "expression": [
+              "",
+              "    DISTINCTCOUNT(Subscriptions[Channel Id])"
+            ],
+            "formatString": "0",
+            "lineageTag": "5c6bb9b8-0d95-45ed-bf93-04a251a51749"
+          },
+          {
+            "name": "Total Channel Count",
+            "expression": "DISTINCTCOUNT(Playlists[GetDataUsingAPI - Channel ID])",
+            "formatString": "0",
+            "lineageTag": "f4519092-7437-4355-ab45-796e54e2fb10"
+          },
+          {
+            "name": "TimeOnlyMeasure",
+            "expression": [
+              "",
+              "VAR date1 = MAX(Playlists[GetDataUsingAPI - Published Date])",
+              "VAR date2 = Max(Playlists[Playlist Video Creation Timestamp])",
+              "RETURN",
+              "DATEDIFF(",
+              "    date1,",
+              "    date2,",
+              "    HOUR",
+              "    )",
+              ""
+            ],
+            "formatStringDefinition": {
+              "expression": [
+                "\"\"\"\" &",
+                "Format(MAX(Playlists[GetDataUsingAPI - Published Date]),\"hh:nn:ss AMPM\")& \"\"\"\""
+              ]
+            },
+            "lineageTag": "08f73fb0-9aff-41b0-8522-44f75b76c743"
+          },
+          {
+            "name": "CF",
+            "expression": [
+              "",
+              "IF ( ",
+              "    [Total Comments] >= [Target Value] ,",
+              "    \"#134F5C\",",
+              "    \"#D0E0E3\"",
+              ")"
+            ],
+            "lineageTag": "78648cf2-baa8-40f9-ab1a-088b4a16d5a3"
+          },
+          {
+            "name": "CF for Data Labels",
+            "expression": [
+              "",
+              "IF ( ",
+              "    [Total Comments] >= [Target Value] ,",
+              "    \"#ffffff\",",
+              "    \"#FF0000\"",
+              ")"
+            ],
+            "lineageTag": "44a3b090-3f3e-4a5e-bd76-ebdbcbe11ef9"
+          },
+          {
+            "name": "Target Value",
+            "expression": "MAX('Target Table'[Value])",
+            "formatString": "0",
+            "lineageTag": "acd713f5-f8f3-4952-9bfa-af0e5e26599b"
+          },
+          {
+            "name": "Subscriber_Count",
+            "expression": "SUM(Subscriptions[Subscriber Count])",
+            "formatString": "#,0",
+            "lineageTag": "33d33059-e5e7-4783-a4b8-94526ba86afd"
+          },
+          {
+            "name": "Total Subscriptions Until Today",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(Subscriptions[Subscriber Count]),",
+              "    Subscriptions[ChannelCreatedOn] <= TODAY()",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "f6c67d1d-a5ca-4e7e-a393-927b71a4b136"
+          },
+          {
+            "name": "Treemap Size",
+            "expression": "1",
+            "formatString": "0",
+            "lineageTag": "6cc1fb74-d7a4-44d1-9a99-53d893511750"
+          },
+          {
+            "name": "Total Comments",
+            "expression": "Count(Search_History[Comments])",
+            "formatString": "#,0",
+            "lineageTag": "ea56b66c-5f77-4f39-ae6f-6b65c4df485a"
+          },
+          {
+            "name": "# Item Value",
+            "expression": "SELECTEDVALUE('# Item'[# Item], 5)",
+            "formatString": "0",
+            "lineageTag": "19811978-d22d-488e-911c-8147b417a586"
+          },
+          {
+            "name": "Item Filter",
+            "expression": [
+              "",
+              "",
+              "Var _Page = [# Page Value]",
+              "Var _Number_of_Items = [# Item Value]",
+              "Var _ItmeRank = [Item Rank]",
+              "Var ItemsFilteredTbl = ",
+              "FILTER (",
+              "    ALLSELECTED ( 'Playlist Details'[Playlist Title (Original)]),",
+              "    _ItmeRank > (_Page - 1) * _Number_of_Items ",
+              "    && _ItmeRank <= (_Page) * _Number_of_Items ",
+              ")",
+              "Var _ItmesShow = ",
+              "IF (",
+              "    SELECTEDVALUE (",
+              "        'Playlist Details'[Playlist Title (Original)]) IN ItemsFilteredTbl,",
+              "        1,",
+              "        0",
+              ")",
+              "",
+              "RETURN",
+              "_ItmesShow"
+            ],
+            "formatString": "0",
+            "lineageTag": "9be46274-21af-4ee8-adc8-5177ab183294"
+          },
+          {
+            "name": "Item Rank",
+            "expression": [
+              "",
+              "RANKX (",
+              "    ALL ( 'Playlist Details'[Playlist Title (Original)] ),",
+              "    [Total Watch Time (Minutes)]",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "e57d7e3b-48e2-4d0d-89aa-35c83ba7c3a2"
+          },
+          {
+            "name": "# Page Value",
+            "expression": "SELECTEDVALUE('# Pages'[# Page], 1)",
+            "formatString": "0",
+            "lineageTag": "0b2b8a9a-52b3-4dea-bd9f-76bda8f837f0"
+          },
+          {
+            "name": "Page Filter",
+            "expression": [
+              "",
+              "Var _TotalNrItems = ",
+              "CALCULATE (",
+              "    DISTINCTCOUNT (",
+              "        'Playlist Details'[Playlist Title (Original)]",
+              "    ),",
+              "    ALL (",
+              "        'Playlist Details'[Playlist Title (Original)]",
+              "    )",
+              ")",
+              "",
+              "VAR _ShowNrItmes = [# Item Value]",
+              "VAR _NumberofPages = ",
+              "ROUNDUP(",
+              "    DIVIDE ( ",
+              "        _TotalNrItems,",
+              "        _ShowNrItmes",
+              "    ), 0",
+              ")",
+              "",
+              "VAR PageFilter = ",
+              "IF ( ",
+              "    SELECTEDVALUE('# Pages'[# Page]) <= _NumberofPages,",
+              "    1,",
+              "    0",
+              ")",
+              "",
+              "RETURN",
+              "PageFilter"
+            ],
+            "formatString": "0",
+            "lineageTag": "571c17d7-49a6-414d-aaac-25ea244f1a1d"
+          },
+          {
+            "name": "Date Filter Slicer",
+            "expression": [
+              "",
+              "IF ( ",
+              "    SELECTEDVALUE ( 'Date Category table'[TYPE]) = \"Custom\",",
+              "    1,",
+              "    0",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "53edfd38-e19d-4859-a413-74d2dc93a110"
+          },
+          {
+            "name": "Date Filter Title",
+            "expression": [
+              "",
+              "IF ( ",
+              "    SELECTEDVALUE ( 'Date Category table'[TYPE]) = \"Custom\",",
+              "    \"Custom Range Enabled\",",
+              "    \"Custom Range Disabled\"",
+              ")"
+            ],
+            "lineageTag": "bbd01e6e-5f0c-44f8-a0c8-cb750c897bd1"
+          },
+          {
+            "name": "List of Channel Content Type values",
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": [
+              "",
+              "VAR __DISTINCT_VALUES_COUNT = DISTINCTCOUNT('Playlists'[Channel Content Type])",
+              "VAR __MAX_VALUES_TO_SHOW = 3",
+              "RETURN",
+              "\tIF(",
+              "\t\t__DISTINCT_VALUES_COUNT > __MAX_VALUES_TO_SHOW,",
+              "\t\tCONCATENATE(",
+              "\t\t\tCONCATENATEX(",
+              "\t\t\t\tTOPN(",
+              "\t\t\t\t\t__MAX_VALUES_TO_SHOW,",
+              "\t\t\t\t\tVALUES('Playlists'[Channel Content Type]),",
+              "\t\t\t\t\t'Playlists'[Channel Content Type],",
+              "\t\t\t\t\tASC",
+              "\t\t\t\t),",
+              "\t\t\t\t'Playlists'[Channel Content Type],",
+              "\t\t\t\t\", \",",
+              "\t\t\t\t'Playlists'[Channel Content Type],",
+              "\t\t\t\tASC",
+              "\t\t\t),",
+              "\t\t\t\", etc.\"",
+              "\t\t),",
+              "\t\tCONCATENATEX(",
+              "\t\t\tVALUES('Playlists'[Channel Content Type]),",
+              "\t\t\t'Playlists'[Channel Content Type],",
+              "\t\t\t\", \",",
+              "\t\t\t'Playlists'[Channel Content Type],",
+              "\t\t\tASC",
+              "\t\t)",
+              "\t)"
+            ],
+            "extendedProperties": [
+              {
+                "name": "MeasureTemplate",
+                "type": "json",
+                "value": {
+                  "daxTemplateName": "ConcatenateValues",
+                  "version": 0
+                }
+              }
+            ],
+            "lineageTag": "be342d47-4971-4aa5-a1ad-32c01b91a3cd"
+          },
+          {
+            "name": "Date Filter Font Color",
+            "expression": [
+              "IF ( ",
+              "    [Date Filter Title] = \"Custom Range Enabled\",",
+              "    \"#0C343D\",",
+              "    \"#FF0000\"",
+              ")"
+            ],
+            "lineageTag": "3fdbcd75-479a-4d95-a0cf-b6022c015edc"
+          },
+          {
+            "name": "Live Comments",
+            "expression": "DISTINCTCOUNT ( 'Live Comments'[Live_Comments])",
+            "formatString": "0",
+            "lineageTag": "c531c861-a90c-4a2d-afe8-bce0e2ed9b7c"
+          },
+          {
+            "name": "My Subscriber",
+            "expression": "Count('My Subscriber'[SubscriberCount])",
+            "formatString": "0",
+            "lineageTag": "349184c1-09cd-4c27-b1fe-ccf78f82512e"
+          },
+          {
+            "name": "Video (My)",
+            "expression": "SUM('My Subscriber'[VideoCount])",
+            "formatString": "0",
+            "lineageTag": "846cac18-3f59-46d8-bb99-90f1583014c7"
+          },
+          {
+            "name": "Views (My)",
+            "expression": "SUM('My Subscriber'[ViewCount])",
+            "formatString": "0",
+            "lineageTag": "475ffd4a-28c5-409f-b5b2-924971646afb"
+          },
+          {
+            "name": "Label Placeholder",
+            "expression": "0",
+            "formatString": "0",
+            "lineageTag": "e1b01e94-4525-48bd-a328-cec6113caf4b"
+          },
+          {
+            "name": "Labels for bar Chart",
+            "expression": [
+              "",
+              "VAR Title = SELECTEDVALUE ( 'Playlist Details'[Playlist Title (Original)])",
+              "VAR WatchTime = FORMAT([Total Watch Time (Minutes)],\"#,##0,,\")",
+              "VAR CombineTitle = Title & \" | \" & WatchTime",
+              "return",
+              "CombineTitle",
+              ""
+            ],
+            "lineageTag": "fd1f2468-f4cc-4487-a3f1-c4bb59206b1e"
+          },
+          {
+            "name": "Avg View Duration (Minutes)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "DIVIDE ( ",
+              "    [Total Watch Time (Minutes)], [Total Views (SUM)])"
+            ],
+            "lineageTag": "530766bd-b0fd-469e-9928-c4d7a02d3bed"
+          },
+          {
+            "name": "Tooltip Measure",
+            "expression": "\"wwwwwwwwwww\"",
+            "lineageTag": "99980418-4fff-4081-b399-a33a37aed42f"
+          },
+          {
+            "name": "Total Views (SUM)",
+            "expression": "SUM(Playlists[Total Views])",
+            "formatString": "#,0",
+            "lineageTag": "86920bae-0e48-45ed-a2f7-3450b913687f"
+          },
+          {
+            "name": "Total Watch Time (Minutes)",
+            "expression": [
+              "",
+              "",
+              "    [Video Duration Minutes (AVG)] * [Total Views (SUM)]",
+              ""
+            ],
+            "formatString": "#,0",
+            "lineageTag": "733854ae-e1f3-4f44-a01f-b7526183224c"
+          },
+          {
+            "name": "Transparent",
+            "expression": "\"#FFffff00\"",
+            "lineageTag": "2fe082a9-a667-4688-a53f-69e667f81889"
+          },
+          {
+            "name": "Video Duration Minutes (AVG)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "AVERAGE ( Playlists[Video Duration - Minutes])",
+            "lineageTag": "a0d8a053-5405-48cb-bc72-063a6cdd863c"
+          },
+          {
+            "name": "Video Duration Minutes (SUM)",
+            "expression": "SUM ( Playlists[Video Duration - Minutes])",
+            "formatString": "0",
+            "lineageTag": "f1aa6221-ba00-449e-99c0-49f4d15c9b6f"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Measure Table",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#\"Measure Names\" = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Measure Names\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "My Subscriber",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "SubscriberCount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "558df643-7436-4ad9-af60-de5c6a25f17e",
+            "sourceColumn": "SubscriberCount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "VideoCount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "61c3ce81-56f0-4928-a3e0-311a41298bf3",
+            "sourceColumn": "VideoCount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ViewCount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "93d62c84-ca33-42ea-9758-bd9794ce0205",
+            "sourceColumn": "ViewCount",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "fb5bd5b2-2da0-439f-9d87-061bd8fa362c",
+        "partitions": [
+          {
+            "name": "My Subscriber",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://www.googleapis.com/youtube/v3/channels?part=statistics&id=\" & ChannelID & \"&key=\" & APIKey)),",
+                "    #\"Converted to Table\" = Table.FromRecords({Source}),",
+                "    #\"Expanded items\" = Table.ExpandListColumn(#\"Converted to Table\", \"items\"),",
+                "    #\"Expanded items1\" = Table.ExpandRecordColumn(#\"Expanded items\", \"items\", {\"statistics\"}, {\"items.statistics\"}),",
+                "    #\"Expanded items.statistics\" = Table.ExpandRecordColumn(#\"Expanded items1\", \"items.statistics\", {\"viewCount\", \"subscriberCount\", \"videoCount\"}, {\"items.statistics.viewCount\", \"items.statistics.subscriberCount\", \"items.statistics.videoCount\"}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Expanded items.statistics\",{\"kind\", \"etag\", \"pageInfo\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed Columns\",{{\"items.statistics.viewCount\", \"ViewCount\"}, {\"items.statistics.subscriberCount\", \"SubscriberCount\"}, {\"items.statistics.videoCount\", \"VideoCount\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"ViewCount\", Int64.Type}, {\"SubscriberCount\", Int64.Type}, {\"VideoCount\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Playlist Details",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Channel Title",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5ccc0702-e50a-4d06-87ca-624cdcf644e9",
+            "sourceColumn": "Channel Title",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "My Channel ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e1ad2c16-76f2-4daa-a6a3-dd4af931d5e3",
+            "sourceColumn": "My Channel ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Playlist Create Timestamp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "3328e0ed-b9ae-4d73-aff4-e084167f6e4f",
+            "sourceColumn": "Playlist Create Timestamp",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_3e9fb720-7bbc-497e-a357-6daf0fef6346"
+                },
+                "isDefault": true,
+                "relationship": "0889b626-9ba0-4a2a-b64e-448cdafce1ff"
+              }
+            ]
+          },
+          {
+            "name": "Playlist Description (Original)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b6904e8f-d9b7-4a56-a1fd-d652c92a5ed7",
+            "sourceColumn": "Playlist Description (Original)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Playlist ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "81195ed6-f7f3-4362-88e3-cd266f16d5e3",
+            "sourceColumn": "Playlist ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Playlist Owner",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e9ce98c3-425c-412e-bf79-3f2cda62bbdd",
+            "sourceColumn": "Playlist Owner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Playlist Published At",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "a8d37caa-598b-4d71-a60c-1f080fe04177",
+            "sourceColumn": "Playlist Published At",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_27b7fda2-5ef0-450e-852c-61ce8b38b0be"
+                },
+                "isDefault": true,
+                "relationship": "400aa30c-09e4-4828-ae7b-671d452f668c"
+              }
+            ]
+          },
+          {
+            "name": "Playlist Thumbnail",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "296efd7c-6dd5-42af-b2b0-683e605cbfb3",
+            "sourceColumn": "Playlist Thumbnail",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Playlist Title (Original)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "447c379f-68fe-4d38-a34b-9d265e7244c6",
+            "sourceColumn": "Playlist Title (Original)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Playlist Update Timestamp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "c0a7ab4b-f929-4e3e-b233-875d90c5633d",
+            "sourceColumn": "Playlist Update Timestamp",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_debfdb63-a826-4a54-9e2e-2c5ad3418005"
+                },
+                "isDefault": true,
+                "relationship": "f3f22551-2bf2-4580-a3c0-c25f6e6cd80d"
+              }
+            ]
+          },
+          {
+            "name": "Playlist Visibility",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9c0803d1-ad31-4633-9175-de28f50d1e3e",
+            "sourceColumn": "Playlist Visibility",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Video Description",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "53694205-fb46-4297-85bc-c9ac98fecb8b",
+            "sourceColumn": "Video Description",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Video Owner Channel ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "78578022-cbe0-4ada-8b33-9259570995e5",
+            "sourceColumn": "Video Owner Channel ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Video title",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8e2afd96-d5b6-40e1-934f-c8824abc3f2f",
+            "sourceColumn": "Video title",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "dbf1c82e-5ef5-4674-b58f-f8ca9ebe8531",
+        "partitions": [
+          {
+            "name": "Playlist Details",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\Playlist Details\\CSV Format\\playlists.csv\"),[Delimiter=\",\", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Promoted Headers\", each ([Playlist ID] <> \"\")),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Filtered Rows\",{\"Playlist ID\", \"Playlist Description (Original)\", \"Playlist Title (Original)\", \"Playlist Create Timestamp\", \"Playlist Update Timestamp\", \"Playlist Visibility\"}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Removed Other Columns\", \"GetVideoId - using API\", each let",
+                "    apiKey = APIKey,",
+                "    playlistId = Text.Combine({[Playlist ID]}, \",\"),",
+                "    apiUrl = \"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\" & playlistId & \"&key=\" & apiKey,",
+                "    Source = Json.Document(Web.Contents(apiUrl))",
+                "in",
+                "    Source),",
+                "    #\"Removed Errors\" = Table.RemoveRowsWithErrors(#\"Added Custom\", {\"GetVideoId - using API\"}),",
+                "    #\"Expanded GetVideoId - using API\" = Table.ExpandRecordColumn(#\"Removed Errors\", \"GetVideoId - using API\", {\"items\"}, {\"GetVideoId - using API.items\"}),",
+                "    #\"Expanded GetVideoId - using API.items\" = Table.ExpandListColumn(#\"Expanded GetVideoId - using API\", \"GetVideoId - using API.items\"),",
+                "    #\"Expanded GetVideoId - using API.items1\" = Table.ExpandRecordColumn(#\"Expanded GetVideoId - using API.items\", \"GetVideoId - using API.items\", {\"snippet\"}, {\"GetVideoId - using API.items.snippet\"}),",
+                "    #\"Expanded GetVideoId - using API.items.snippet\" = Table.ExpandRecordColumn(#\"Expanded GetVideoId - using API.items1\", \"GetVideoId - using API.items.snippet\", {\"publishedAt\", \"channelId\", \"title\", \"description\", \"thumbnails\", \"channelTitle\", \"playlistId\", \"videoOwnerChannelTitle\", \"videoOwnerChannelId\"}, {\"GetVideoId - using API.items.snippet.publishedAt\", \"GetVideoId - using API.items.snippet.channelId\", \"GetVideoId - using API.items.snippet.title\", \"GetVideoId - using API.items.snippet.description\", \"GetVideoId - using API.items.snippet.thumbnails\", \"GetVideoId - using API.items.snippet.channelTitle\", \"GetVideoId - using API.items.snippet.playlistId\", \"GetVideoId - using API.items.snippet.videoOwnerChannelTitle\", \"GetVideoId - using API.items.snippet.videoOwnerChannelId\"}),",
+                "    #\"Expanded GetVideoId - using API.items.snippet.thumbnails\" = Table.ExpandRecordColumn(#\"Expanded GetVideoId - using API.items.snippet\", \"GetVideoId - using API.items.snippet.thumbnails\", {\"high\"}, {\"GetVideoId - using API.items.snippet.thumbnails.high\"}),",
+                "    #\"Expanded GetVideoId - using API.items.snippet.thumbnails.high\" = Table.ExpandRecordColumn(#\"Expanded GetVideoId - using API.items.snippet.thumbnails\", \"GetVideoId - using API.items.snippet.thumbnails.high\", {\"url\"}, {\"GetVideoId - using API.items.snippet.thumbnails.high.url\"}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Expanded GetVideoId - using API.items.snippet.thumbnails.high\",{\"GetVideoId - using API.items.snippet.playlistId\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed Columns\",{{\"GetVideoId - using API.items.snippet.videoOwnerChannelId\", \"Video Owner Channel ID\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"Video Owner Channel ID\", type text}}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Changed Type\",{{\"GetVideoId - using API.items.snippet.videoOwnerChannelTitle\", \"Channel Title\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"Channel Title\", type text}}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Changed Type1\",{{\"GetVideoId - using API.items.snippet.channelTitle\", \"Playlist Owner\"}}),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Renamed Columns2\",{{\"Playlist Owner\", type text}}),",
+                "    #\"Renamed Columns3\" = Table.RenameColumns(#\"Changed Type2\",{{\"GetVideoId - using API.items.snippet.thumbnails.high.url\", \"Playlist Thumbnail\"}}),",
+                "    #\"Changed Type3\" = Table.TransformColumnTypes(#\"Renamed Columns3\",{{\"Playlist Thumbnail\", type text}}),",
+                "    #\"Renamed Columns4\" = Table.RenameColumns(#\"Changed Type3\",{{\"GetVideoId - using API.items.snippet.description\", \"Video Description\"}}),",
+                "    #\"Changed Type4\" = Table.TransformColumnTypes(#\"Renamed Columns4\",{{\"Video Description\", type text}}),",
+                "    #\"Renamed Columns5\" = Table.RenameColumns(#\"Changed Type4\",{{\"GetVideoId - using API.items.snippet.title\", \"Video title\"}}),",
+                "    #\"Changed Type5\" = Table.TransformColumnTypes(#\"Renamed Columns5\",{{\"Video title\", type text}, {\"GetVideoId - using API.items.snippet.publishedAt\", type datetime}}),",
+                "    #\"Renamed Columns6\" = Table.RenameColumns(#\"Changed Type5\",{{\"GetVideoId - using API.items.snippet.channelId\", \"Channel ID\"}}),",
+                "    #\"Changed Type6\" = Table.TransformColumnTypes(#\"Renamed Columns6\",{{\"Channel ID\", type text}}),",
+                "    #\"Renamed Columns7\" = Table.RenameColumns(#\"Changed Type6\",{{\"GetVideoId - using API.items.snippet.publishedAt\", \"Playlist Published At\"}}),",
+                "    #\"Changed Type7\" = Table.TransformColumnTypes(#\"Renamed Columns7\",{{\"Playlist Create Timestamp\", type datetime}, {\"Playlist Update Timestamp\", type datetime}}),",
+                "    #\"Renamed Columns8\" = Table.RenameColumns(#\"Changed Type7\",{{\"Channel ID\", \"My Channel ID\"}})",
+                "in",
+                "    #\"Renamed Columns8\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Playlists",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Channel Content Type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": [
+              "",
+              "IF ( ",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"A.R. Rahman\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Abhijay\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Abhijeet\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Aditya\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Adnan\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Ajay Atul\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Akhil\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Alec\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Ali\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Alka\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Amaal\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Amit Trivedi\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Ankit Tiwari\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Anurag\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Kailash\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Jasleen\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Mitraz\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Mohit\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"KK\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Anuv\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"AP Dhillon\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Arijit\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Music\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Coke\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"T Series\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Armaan\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Arjun\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Atif\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Asim\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Kishore\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"VEVO\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Ashu\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Sanam\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Vishal\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Ed Sheeran\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Uraan\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Udit\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"NARCI\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Darshan\") ||",
+              "    CONTAINSSTRING ( Playlists[Original Channel Title], \"Hansraj\") ||",
+              "    CONTAINSSTRING (Playlists[GetDataUsingAPI - Tags Used],\"Music\") ||",
+              "    CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"song\") ||",
+              "    CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"bhajan\") ||",
+              "    CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"Arijit\") ||",
+              "    CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"Hustle\") ||",
+              "    CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"lyric\"), \"Music\", ",
+              "    IF ( ",
+              "        CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"Power Bi\") ||",
+              "        CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"DAX\") ||",
+              "        CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"Microsoft\"), \"Power Bi\",",
+              "        IF ( ",
+              "            CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"movies\"), \"Movies\",",
+              "            IF ( ",
+              "                CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"code\") ||",
+              "                CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"java\") ||",
+              "                CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"python\") ||",
+              "                CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"SQL\") ||",
+              "                CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"git\") ||",
+              "                CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"css\") ||",
+              "                CONTAINSSTRING ( Playlists[GetDataUsingAPI - Tags Used], \"dbms\")",
+              "                , \"Coding\" ,",
+              "                IF ( ",
+              "                    CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"job\") ||",
+              "                    CONTAINSSTRING( Playlists[GetDataUsingAPI - Tags Used], \"interview\"), \"Job & Interview\" , \" Music & Others\"",
+              "                ) ",
+              "            )  ",
+              "        )    ",
+              "    )   ",
+              ")",
+              "",
+              ""
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "23492d74-9d89-463f-8700-96b9d4cbe1d6",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Channel URL (Playlists)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "WebUrl",
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": "\"https://www.youtube.com/channel/\" & Playlists[GetDataUsingAPI - Channel ID]",
+            "isDataTypeInferred": true,
+            "lineageTag": "ca6fa591-01de-4277-a3a2-abc52b32db2d",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Comments",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7838b413-0ead-4237-8d42-1f079f8343b4",
+            "sourceColumn": "Comments",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Channel ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3769b4cc-3bd3-4333-abf8-8b4e32e448b4",
+            "sourceColumn": "GetDataUsingAPI - Channel ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Channel Title - First",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "84a02c5d-ded7-4fd2-8fc7-59b7a924957c",
+            "sourceColumn": "GetDataUsingAPI - Channel Title - First",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Channel Title - Last",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "17223586-2494-4d63-bba2-81253e230252",
+            "sourceColumn": "GetDataUsingAPI - Channel Title - Last",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Description",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7e5ec68e-55eb-4447-8bcf-5fa2ee8b030c",
+            "sourceColumn": "GetDataUsingAPI - Description",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Published Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "bd74b52a-3c2a-44d7-90ae-913eb0559884",
+            "sourceColumn": "GetDataUsingAPI - Published Date",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_25247a66-c88c-46c2-9499-2cb6f004f26a"
+                },
+                "isDefault": true,
+                "relationship": "2035d1ea-9ede-4922-9826-39ed758cdf03"
+              }
+            ]
+          },
+          {
+            "name": "GetDataUsingAPI - Tags Used",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ec87270e-040b-44d2-8448-7a5c74efa7a3",
+            "sourceColumn": "GetDataUsingAPI - Tags Used",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Thumbnail's URL",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "ImageUrl",
+            "dataType": "string",
+            "lineageTag": "4700eed0-1b1b-4dee-9327-b15bdec1a5d8",
+            "sourceColumn": "GetDataUsingAPI - Thumbnail's URL",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GetDataUsingAPI - Title",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6fd1ddd4-3dcd-44ae-a8ee-983c7a6e53b5",
+            "sourceColumn": "GetDataUsingAPI - Title",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Likes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "eb2e9340-e572-43a8-9025-3fe85b7b9c0c",
+            "sourceColumn": "Likes",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LinkOfVideoID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "WebUrl",
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": "\"https://www.youtube.com/watch?v=\" & Playlists[Video ID]",
+            "isDataTypeInferred": true,
+            "lineageTag": "ff65006c-ce3f-4b90-a75b-035f93ebc0cf",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Original Channel Title",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": [
+              "",
+              "IF (",
+              "    CONTAINSSTRING ( Playlists[GetDataUsingAPI - Channel Title - Last], \"Topic\"),",
+              "    Playlists[GetDataUsingAPI - Channel Title - First],",
+              "    Playlists[GetDataUsingAPI - Channel Title - First] & \" \" & Playlists[GetDataUsingAPI - Channel Title - Last]",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "b6fd6a41-0326-4f05-ba11-24e0a2908e42",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Playlist Video Creation Timestamp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "ee322e84-d6fa-46bf-b8f1-f59856952253",
+            "sourceColumn": "Playlist Video Creation Timestamp",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_0ddba20a-90d7-458a-bf0a-c64f076fdbe8"
+                },
+                "isDefault": true,
+                "relationship": "c0656a27-b226-45bb-8447-f9dbdf560bb7"
+              }
+            ]
+          },
+          {
+            "name": "Tooltip 1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": [
+              "\"Total Channels by Content Type : \" & [List of Channel Content Type values] & \" Including Subscribed Channels.\"",
+              ""
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "0c21604f-a4f0-44b2-b8b0-29f3db62898b",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Total Views",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7f1bd4b3-2f58-4534-8892-2fdbe1e773ba",
+            "sourceColumn": "Total Views",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Video Duration",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c333d767-ab25-4902-91b9-161e7c185ad0",
+            "sourceColumn": "Video Duration",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Video Duration - Hours",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "fc03240e-e720-47a6-bd9b-f5a054fa079d",
+            "sourceColumn": "Video Duration - Hours",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Video Duration - Minutes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "30825bd1-9fd6-4434-8445-adc18b43c447",
+            "sourceColumn": "Video Duration - Minutes",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Video Duration - Seconds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f046bfdb-d6b6-4c5c-9131-c5308f94d101",
+            "sourceColumn": "Video Duration - Seconds",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Video ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "63d12382-0286-44a1-a82e-e19fd0901009",
+            "sourceColumn": "Video ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WeekNumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": "FORMAT(WEEKNUM ( Playlists[Playlist Video Creation Timestamp],2),\"00\") & \" /\" & FORMAT(Playlists[Playlist Video Creation Timestamp],\"yyyy\")",
+            "isDataTypeInferred": true,
+            "lineageTag": "a3b3534f-a910-4e8e-9495-e19dee4732d7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "d80b09ce-9c90-4a8a-8926-20a8626c9434",
+        "partitions": [
+          {
+            "name": "Playlists",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\playlists\\CSV Format\"),",
+                "    Custom1 = Table.TransformColumns(",
+                "    Source, {\"Content\", each Table.PromoteHeaders(Csv.Document(_))}",
+                "),",
+                "    Content = Table.Combine(Custom1[Content]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(Content, each ([Video ID] <> null and [Video ID] <> \"\")),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"Playlist Video Creation Timestamp\", type datetime}}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Changed Type\", \"GetDataUsingAPI\", each let",
+                "    apiKey = \"AIzaSyCri9-SYpOWwPkJDCXPuKKEgtuRWc2trgY\",",
+                "    apiUrl = \"https://www.googleapis.com/youtube/v3/videos?key=\" & apiKey & \"&part=snippet&id=\" &  Text.Combine({[Video ID]},\",\"),",
+                "    Source = Json.Document(Web.Contents(apiUrl))",
+                "in",
+                "    Source),",
+                "    #\"Expanded GetDataUsingAPI\" = Table.ExpandRecordColumn(#\"Added Custom\", \"GetDataUsingAPI\", {\"items\"}, {\"GetDataUsingAPI.items\"}),",
+                "    #\"Expanded GetDataUsingAPI.items\" = Table.ExpandListColumn(#\"Expanded GetDataUsingAPI\", \"GetDataUsingAPI.items\"),",
+                "    #\"Expanded GetDataUsingAPI.items1\" = Table.ExpandRecordColumn(#\"Expanded GetDataUsingAPI.items\", \"GetDataUsingAPI.items\", {\"snippet\"}, {\"GetDataUsingAPI.items.snippet\"}),",
+                "    #\"Expanded GetDataUsingAPI.items.snippet\" = Table.ExpandRecordColumn(#\"Expanded GetDataUsingAPI.items1\", \"GetDataUsingAPI.items.snippet\", {\"publishedAt\", \"channelId\", \"title\", \"description\", \"thumbnails\", \"channelTitle\", \"tags\", \"categoryId\", \"liveBroadcastContent\", \"localized\"}, {\"GetDataUsingAPI.items.snippet.publishedAt\", \"GetDataUsingAPI.items.snippet.channelId\", \"GetDataUsingAPI.items.snippet.title\", \"GetDataUsingAPI.items.snippet.description\", \"GetDataUsingAPI.items.snippet.thumbnails\", \"GetDataUsingAPI.items.snippet.channelTitle\", \"GetDataUsingAPI.items.snippet.tags\", \"GetDataUsingAPI.items.snippet.categoryId\", \"GetDataUsingAPI.items.snippet.liveBroadcastContent\", \"GetDataUsingAPI.items.snippet.localized\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Expanded GetDataUsingAPI.items.snippet\",{{\"GetDataUsingAPI.items.snippet.publishedAt\", \"GetDataUsingAPI - Published Date\"}, {\"GetDataUsingAPI.items.snippet.channelId\", \"GetDataUsingAPI - Channel ID\"}, {\"GetDataUsingAPI.items.snippet.title\", \"GetDataUsingAPI - Title\"}, {\"GetDataUsingAPI.items.snippet.description\", \"GetDataUsingAPI - Description\"}, {\"GetDataUsingAPI.items.snippet.channelTitle\", \"GetDataUsingAPI - Channel Title\"}, {\"GetDataUsingAPI.items.snippet.tags\", \"GetDataUsingAPI - Tags Used\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"GetDataUsingAPI - Published Date\", type datetime}, {\"Playlist Video Creation Timestamp\", type datetime}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type1\",{\"GetDataUsingAPI.items.snippet.categoryId\", \"GetDataUsingAPI.items.snippet.liveBroadcastContent\", \"GetDataUsingAPI.items.snippet.localized\"}),",
+                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Removed Columns\", each ([#\"GetDataUsingAPI - Channel ID\"] <> null)),",
+                "    #\"Expanded GetDataUsingAPI.items.snippet.thumbnails\" = Table.ExpandRecordColumn(#\"Filtered Rows1\", \"GetDataUsingAPI.items.snippet.thumbnails\", {\"default\", \"medium\", \"high\", \"standard\", \"maxres\"}, {\"GetDataUsingAPI.items.snippet.thumbnails.default\", \"GetDataUsingAPI.items.snippet.thumbnails.medium\", \"GetDataUsingAPI.items.snippet.thumbnails.high\", \"GetDataUsingAPI.items.snippet.thumbnails.standard\", \"GetDataUsingAPI.items.snippet.thumbnails.maxres\"}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Expanded GetDataUsingAPI.items.snippet.thumbnails\",{\"GetDataUsingAPI.items.snippet.thumbnails.default\", \"GetDataUsingAPI.items.snippet.thumbnails.medium\", \"GetDataUsingAPI.items.snippet.thumbnails.standard\", \"GetDataUsingAPI.items.snippet.thumbnails.maxres\"}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns1\",{{\"GetDataUsingAPI.items.snippet.thumbnails.high\", \"GetDataUsingAPI - Thumbnail's High\"}}),",
+                "    #\"Expanded GetDataUsingAPI - Thumbnail's High\" = Table.ExpandRecordColumn(#\"Renamed Columns1\", \"GetDataUsingAPI - Thumbnail's High\", {\"url\"}, {\"GetDataUsingAPI - Thumbnail's High.url\"}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Expanded GetDataUsingAPI - Thumbnail's High\",{{\"GetDataUsingAPI - Thumbnail's High.url\", \"GetDataUsingAPI - Thumbnail's URL\"}}),",
+                "    #\"Extracted Values\" = Table.TransformColumns(#\"Renamed Columns2\", {\"GetDataUsingAPI - Tags Used\", each Text.Combine(List.Transform(_, Text.From), \",\"), type text}),",
+                "    #\"Removed Errors\" = Table.RemoveRowsWithErrors(#\"Extracted Values\", {\"GetDataUsingAPI - Tags Used\"}),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Removed Errors\",{{\"GetDataUsingAPI - Channel Title\", type text}, {\"GetDataUsingAPI - Thumbnail's URL\", type text}, {\"GetDataUsingAPI - Description\", type text}, {\"GetDataUsingAPI - Title\", type text}, {\"GetDataUsingAPI - Channel ID\", type text}}),",
+                "    #\"Split Column by Delimiter\" = Table.SplitColumn(#\"Changed Type2\", \"GetDataUsingAPI - Channel Title\", Splitter.SplitTextByDelimiter(\"-\", QuoteStyle.Csv), {\"GetDataUsingAPI - Channel Title.1\", \"GetDataUsingAPI - Channel Title.2\", \"GetDataUsingAPI - Channel Title.3\"}),",
+                "    #\"Changed Type3\" = Table.TransformColumnTypes(#\"Split Column by Delimiter\",{{\"Video ID\", type text}, {\"GetDataUsingAPI - Channel Title.1\", type text}, {\"GetDataUsingAPI - Channel Title.2\", type text}, {\"GetDataUsingAPI - Channel Title.3\", type text}}),",
+                "    #\"Filtered Rows2\" = Table.SelectRows(#\"Changed Type3\", each true),",
+                "    #\"Removed Columns2\" = Table.RemoveColumns(#\"Filtered Rows2\",{\"GetDataUsingAPI - Channel Title.3\"}),",
+                "    #\"Renamed Columns3\" = Table.RenameColumns(#\"Removed Columns2\",{{\"GetDataUsingAPI - Channel Title.1\", \"GetDataUsingAPI - Channel Title - First\"}, {\"GetDataUsingAPI - Channel Title.2\", \"GetDataUsingAPI - Channel Title - Last\"}}),",
+                "    #\"Added Custom1\" = Table.AddColumn(#\"Renamed Columns3\", \"Video Duration\", each let",
+                "    apiKey = APIKey,",
+                "    apiUrl = \"https://www.googleapis.com/youtube/v3/videos?id=\" & [Video ID] & \"&key=\" & apiKey & \"&part=contentDetails\",",
+                "    json = Json.Document(Web.Contents(apiUrl)),",
+                "    duration = json[items]{0}[contentDetails][duration]",
+                "in",
+                "    duration),",
+                "    #\"Added Custom2\" = Table.AddColumn(#\"Added Custom1\", \"Video Duration - Hours\", each let",
+                "    durationText = [Video Duration],",
+                "    hours = Duration.FromText(durationText) / #duration(0,1,0,0),",
+                "    ",
+                "    hoursText = Text.From(Number.RoundDown(hours))",
+                "    ",
+                "in",
+                "    hoursText),",
+                "    #\"Changed Type4\" = Table.TransformColumnTypes(#\"Added Custom2\",{{\"Video Duration - Hours\", Int64.Type}}),",
+                "    #\"Added Custom4\" = Table.AddColumn(#\"Changed Type4\", \"Custom\", each let",
+                "    durationText = [Video Duration],",
+                "    minutes = Duration.FromText(durationText) / #duration(0,0,1,0),",
+                "    ",
+                "    minutesText = Text.From(Number.RoundDown(minutes))",
+                "    ",
+                "in",
+                "    minutesText),",
+                "    #\"Changed Type5\" = Table.TransformColumnTypes(#\"Added Custom4\",{{\"Custom\", Int64.Type}}),",
+                "    #\"Renamed Columns4\" = Table.RenameColumns(#\"Changed Type5\",{{\"Custom\", \"Video Duration - Minutes\"}}),",
+                "    #\"Added Custom3\" = Table.AddColumn(#\"Renamed Columns4\", \"Video Duration - Seconds\", each let",
+                "    durationText = [Video Duration],",
+                "    seconds = Duration.FromText(durationText) / #duration(0,0,0,1),",
+                "    ",
+                "    secondsText = Text.From(Number.RoundDown(seconds))",
+                "    ",
+                "in",
+                "    secondsText),",
+                "    #\"Changed Type6\" = Table.TransformColumnTypes(#\"Added Custom3\",{{\"Video Duration - Seconds\", Int64.Type}}),",
+                "    #\"Added Custom5\" = Table.AddColumn(#\"Changed Type6\", \"Custom\", each let",
+                "    apiKey = APIKey,",
+                "    videoID = Text.Combine({[Video ID]}, \",\"),",
+                "    apiUrl = \"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=\" & videoID & \"&key=\" & apiKey,",
+                "    response = Json.Document(Web.Contents(apiUrl)),",
+                "    likes = response[items]{0}[statistics][likeCount],",
+                "    comments = response[items]{0}[statistics][commentCount]",
+                "    in",
+                "      [Likes = likes, Comments = comments]),",
+                "    #\"Expanded Custom\" = Table.ExpandRecordColumn(#\"Added Custom5\", \"Custom\", {\"Likes\", \"Comments\"}, {\"Custom.Likes\", \"Custom.Comments\"}),",
+                "    #\"Renamed Columns5\" = Table.RenameColumns(#\"Expanded Custom\",{{\"Custom.Likes\", \"Likes\"}, {\"Custom.Comments\", \"Comments\"}}),",
+                "    #\"Replaced Errors\" = Table.ReplaceErrorValues(#\"Renamed Columns5\", {{\"Comments\", \"Comments Disabled\"}}),",
+                "    #\"Changed Type7\" = Table.TransformColumnTypes(#\"Replaced Errors\",{{\"Likes\", Int64.Type}}),",
+                "    #\"Added Custom6\" = Table.AddColumn(#\"Changed Type7\", \"Total Views\", each let",
+                "            apiKey = APIKey,",
+                "            videoID = Text.Combine({[Video ID]},\",\"),",
+                "            apiUrl = \"https://www.googleapis.com/youtube/v3/videos?part=statistics&id=\" & videoID & \"&key=\" & apiKey,",
+                "            response = Json.Document(Web.Contents(apiUrl)),",
+                "            viewCount = response[items]{0}[statistics][viewCount]",
+                "        in",
+                "            viewCount),",
+                "    #\"Changed Type8\" = Table.TransformColumnTypes(#\"Added Custom6\",{{\"Total Views\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type8\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Search_History",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4c003aba-489a-44ef-9322-b306c1716042",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Comments",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2796a328-b316-4a6c-862e-b737a4ac6710",
+            "sourceColumn": "Comments",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Comments Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "dateTime",
+            "displayFolder": "Calculated Columns",
+            "expression": "DATE(Search_History[Year],month(Search_History[Month&Date]),DAY(Search_History[Month&Date]))",
+            "formatString": "Long Date",
+            "isDataTypeInferred": true,
+            "lineageTag": "4445aa9c-fdf6-4025-a23b-1a2b4b5ad707",
+            "summarizeBy": "none",
+            "type": "calculated",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_5d0af5d6-62d1-43ff-82c2-54e9c66a84e9"
+                },
+                "isDefault": true,
+                "relationship": "9d611dd6-7dc1-4fb4-a1a4-46b65db3a2ff"
+              }
+            ]
+          },
+          {
+            "name": "Month&Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "eb8d05c3-5f23-4642-abf5-77ddf5a76fba",
+            "sourceColumn": "Month&Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "2eddd365-c1fa-43df-8c0d-098ef69a2203",
+            "sourceColumn": "MonthDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "be039255-0e3f-455c-ad68-b58253da774e",
+            "sourceColumn": "Product",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TimeStamp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Time"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Time",
+            "lineageTag": "c1688252-6a46-4c2c-a800-52aff00eaf61",
+            "sourceColumn": "TimeStamp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "63ad4fdd-feb8-4b64-b64d-5c0b5a56d995",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f925ade0-8201-4415-9cd5-f526d4bbc8bd",
+        "partitions": [
+          {
+            "name": "Search_History",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = File.Contents(\"file:///D:/YT%20Overview%20Report/Data/YouTube%20and%20YouTube%20Music/history/search-history.html\"),",
+                "    #\"Extracted Table From Html\" = Html.Table(Source, {{\"Column1\", \".mdl-typography\\-\\-title\"}, {\"Column2\", \".mdl-typography\\-\\-caption\"}, {\"Column3\", \".header-cell + *\"}, {\"Column4\", \".mdl-typography\\-\\-caption A\"}}, [RowSelector=\".outer-cell\"]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Extracted Table From Html\",{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}, {\"Column4\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column2\", \"Column4\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed Columns\",{{\"Column1\", \"Category\"}, {\"Column3\", \"Comments\"}}),",
+                "    #\"Added Custom Column\" = Table.AddColumn(#\"Renamed Columns\", \"Custom\", each let splitComments = Splitter.SplitTextByDelimiter(\" \", QuoteStyle.None)([Comments]) in Text.Start(splitComments{0}?, 8), type text),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Added Custom Column\",{{\"Category\", \"Product\"}, {\"Custom\", \"Category\"}}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Renamed Columns1\", \"DateDataFromComments\", each Text.End([Comments],29)),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Added Custom\",{{\"DateDataFromComments\", type text}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type1\",\"IST\",\"#(00A0)\",Replacer.ReplaceText,{\"DateDataFromComments\"}),",
+                "    #\"Trimmed Text\" = Table.TransformColumns(#\"Replaced Value\",{{\"DateDataFromComments\", Text.Trim, type text}}),",
+                "    #\"Split Column by Delimiter\" = Table.SplitColumn(#\"Trimmed Text\", \"DateDataFromComments\", Splitter.SplitTextByEachDelimiter({\",\"}, QuoteStyle.Csv, true), {\"DateDataFromComments.1\", \"DateDataFromComments.2\"}),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Split Column by Delimiter\",{{\"DateDataFromComments.1\", type text}, {\"DateDataFromComments.2\", type time}}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Changed Type2\",{{\"DateDataFromComments.2\", \"TimeStamp\"}}),",
+                "    #\"Split Column by Delimiter1\" = Table.SplitColumn(#\"Renamed Columns2\", \"DateDataFromComments.1\", Splitter.SplitTextByDelimiter(\",\", QuoteStyle.Csv), {\"DateDataFromComments.1.1\", \"DateDataFromComments.1.2\"}),",
+                "    #\"Changed Type3\" = Table.TransformColumnTypes(#\"Split Column by Delimiter1\",{{\"DateDataFromComments.1.1\", type text}, {\"DateDataFromComments.1.2\", Int64.Type}}),",
+                "    #\"Renamed Columns3\" = Table.RenameColumns(#\"Changed Type3\",{{\"DateDataFromComments.1.2\", \"Year\"}}),",
+                "    #\"Added Custom Column1\" = Table.AddColumn(#\"Renamed Columns3\", \"Custom\", each let splitDateDataFromComments11 = Splitter.SplitTextByPositions({0, Text.PositionOf([DateDataFromComments.1.1], \" \") - 3})([DateDataFromComments.1.1]) in splitDateDataFromComments11{1}?, type text),",
+                "    #\"Removed Errors\" = Table.RemoveRowsWithErrors(#\"Added Custom Column1\", {\"Custom\"}),",
+                "    #\"Renamed Columns4\" = Table.RenameColumns(#\"Removed Errors\",{{\"DateDataFromComments.1.1\", \"MonthDate\"}, {\"Custom\", \"Month&Date\"}})",
+                "in",
+                "    #\"Renamed Columns4\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Subscriptions",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Channel Id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f4c3c653-bd2c-4919-8933-d3b1387eaff8",
+            "sourceColumn": "Channel Id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Channel Title - First",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e598f4b5-7c15-436b-83ab-a2f7521a001f",
+            "sourceColumn": "Channel Title - First",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Channel Title - Last",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "106f9935-1741-4174-ab54-3c7430f4abb8",
+            "sourceColumn": "Channel Title - Last",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Channel Url",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "WebUrl",
+            "dataType": "string",
+            "lineageTag": "c32da5aa-9dc2-4b3b-9746-02a0412e9b06",
+            "sourceColumn": "Channel Url",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelCreatedOn",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "c84ec2f0-30b5-4e39-b433-3b40c563eae1",
+            "sourceColumn": "ChannelCreatedOn",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": [
+              "",
+              " SWITCH (",
+              "            TRUE(),",
+              "            Subscriptions[ChannelCreatedOn] >= DATE(2005, 1, 1) && Subscriptions[ChannelCreatedOn] <= DATE(2010, 12, 31), \"Till 2010\",",
+              "            Subscriptions[ChannelCreatedOn] >= DATE(2010, 12, 31) && Subscriptions[ChannelCreatedOn] <= DATE(2015, 12, 31), \"From 2010 to 2015\",",
+              "         Subscriptions[ChannelCreatedOn] >= DATE(2015, 12, 31) && Subscriptions[ChannelCreatedOn]<= MAX(Subscriptions[ChannelCreatedOn]), \"From 2016 to Till Today\"",
+              "        )"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "fe37f346-9715-47fc-9b36-ae67c23ff32d",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Original Channel Title (Subscription)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "displayFolder": "Calculated Columns",
+            "expression": [
+              "",
+              "IF (",
+              "    CONTAINSSTRING ( Subscriptions[Channel Title - Last], \"Topic\"),",
+              "    Subscriptions[Channel Title - First],",
+              "    Subscriptions[Channel Title - First] & \" \" & Subscriptions[Channel Title - Last]",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "11d15a2d-8766-4924-bfef-047ae7e832d5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Subscriber Count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8a82d22a-1df4-48ef-b564-92ee0f3f0956",
+            "sourceColumn": "Subscriber Count",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "e5e86461-647f-449e-b187-9b68b3d07d61",
+        "partitions": [
+          {
+            "name": "Subscriptions",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\YT Overview Report\\Data\\YouTube and YouTube Music\\subscriptions\\subscriptions.csv\"),[Delimiter=\",\", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}}),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Promoted Headers\", each ([Channel Id] <> \"\") and ([Channel Title] <> \"\")),",
+                "    #\"Removed Errors\" = Table.RemoveRowsWithErrors(#\"Filtered Rows\", {\"Channel Title\"}),",
+                "    #\"Split Column by Delimiter\" = Table.SplitColumn(#\"Removed Errors\", \"Channel Title\", Splitter.SplitTextByDelimiter(\"-\", QuoteStyle.Csv), {\"Channel Title.1\", \"Channel Title.2\"}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Split Column by Delimiter\",{{\"Channel Title.1\", type text}, {\"Channel Title.2\", type text}}),",
+                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type1\", each true),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Filtered Rows1\",{{\"Channel Title.1\", \"Channel Title - First\"}, {\"Channel Title.2\", \"Channel Title - Last\"}}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Renamed Columns\", \"Subscriber Count\", each Json.Document(Web.Contents(\"https://www.googleapis.com/youtube/v3/channels?part=statistics&id=\" & [Channel Id] & \"&key=\"& APIKey))[items]{0}[statistics][subscriberCount]),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Added Custom\",{{\"Subscriber Count\", Int64.Type}}),",
+                "    #\"Removed Errors1\" = Table.RemoveRowsWithErrors(#\"Changed Type2\", {\"Subscriber Count\"}),",
+                "    #\"Added Custom1\" = Table.AddColumn(#\"Removed Errors1\", \"ChannelCreatedOn\", each let",
+                "            apiKey = APIKey,",
+                "            apiUrl = \"https://www.googleapis.com/youtube/v3/channels?part=snippet&id=\" & [Channel Id] & \"&key=\" & apiKey,",
+                "            response = Json.Document(Web.Contents(apiUrl)),",
+                "            creationDate = response[items]{0}[snippet][publishedAt]",
+                "        in",
+                "            creationDate),",
+                "    #\"Changed Type3\" = Table.TransformColumnTypes(#\"Added Custom1\",{{\"ChannelCreatedOn\", type datetime}})",
+                "in",
+                "    #\"Changed Type3\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Target Table",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "ccf645a7c1b043cfb7e72eaded400f3e"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Value",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "86cd198a-a689-4db1-a294-ae497704dfab",
+            "sourceColumn": "[Value]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "84a40bda-6f3e-47d3-b2a9-1776465d1c98",
+        "partitions": [
+          {
+            "name": "Target Table",
+            "mode": "import",
+            "source": {
+              "expression": "GENERATESERIES ( 10 , 600, 1)",
+              "type": "calculated"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

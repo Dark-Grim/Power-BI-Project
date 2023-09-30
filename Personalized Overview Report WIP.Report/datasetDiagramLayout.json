@@ -1,0 +1,189 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 309.72342733188719,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Library_Songs",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 299,
+            "y": 36
+          },
+          "nodeIndex": "Subscriptions",
+          "nodeLineageTag": "e5e86461-647f-449e-b187-9b68b3d07d61",
+          "size": {
+            "height": 221,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 304,
+            "y": 439
+          },
+          "nodeIndex": "Playlists",
+          "nodeLineageTag": "d80b09ce-9c90-4a8a-8926-20a8626c9434",
+          "size": {
+            "height": 209,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1225.2288503253797,
+            "y": 128.91323210412148
+          },
+          "nodeIndex": "Search_History",
+          "nodeLineageTag": "f925ade0-8201-4415-9cd5-f526d4bbc8bd",
+          "size": {
+            "height": 124,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1483.7711496746203,
+            "y": 371.66811279826459
+          },
+          "nodeIndex": "Live Comments",
+          "nodeLineageTag": "51abf911-0965-44f3-80c1-d0e686c09c87",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1277.9414316702821,
+            "y": 0
+          },
+          "nodeIndex": "Measure Table",
+          "nodeLineageTag": "36d69b1b-24c6-4456-a5e3-c4de21d16f6f",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1151.0694143167027,
+            "y": 373.1160520607375
+          },
+          "nodeIndex": "My Subscriber",
+          "nodeLineageTag": "fb5bd5b2-2da0-439f-9d87-061bd8fa362c",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 650.42624728850319,
+            "y": 246.68546637744032
+          },
+          "nodeIndex": "Playlist Details",
+          "nodeLineageTag": "dbf1c82e-5ef5-4674-b58f-f8ca9ebe8531",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 627.41065618221262,
+            "y": 0
+          },
+          "nodeIndex": "Date Table",
+          "nodeLineageTag": "b42283d8-29f3-4643-bab7-8ec69dd3990e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 945.71564263532059,
+            "y": 40.848156182212591
+          },
+          "nodeIndex": "Date Category table",
+          "nodeLineageTag": "6406c870-16fb-4031-be10-cb4f41035f41",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1525.6811279826468,
+            "y": 171.12039045553146
+          },
+          "nodeIndex": "Target Table",
+          "nodeLineageTag": "84a40bda-6f3e-47d3-b2a9-1776465d1c98",
+          "size": {
+            "height": 157.69631236442515,
+            "width": 224.93492407809094
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 1527.1529284164858,
+            "y": 0
+          },
+          "nodeIndex": "# Item",
+          "nodeLineageTag": "d19e03b8-ff80-49d1-8fe4-bb931f7831b8",
+          "size": {
+            "height": 124,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 2556,
+            "y": 212
+          },
+          "nodeIndex": "# Pages",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 12
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 66.188083273510415,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
